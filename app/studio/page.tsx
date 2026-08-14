@@ -1,0 +1,4 @@
+import { cookies } from 'next/headers'; import { list, del } from '@vercel/blob'; import { redirect } from 'next/navigation'; import { isStudioAuthorized, studioCookieName } from '@/lib/studio-auth'; import StudioClient from './studio-client';
+export const metadata = { title: 'Studio', robots: { index: false, follow: false } };
+async function remove(formData: FormData) { 'use server'; if (!isStudioAuthorized((await cookies()).get(studioCookieName())?.value)) redirect('/studio'); await del(formData.get('url') as string); }
+export default async function Studio() { const authorized = isStudioAuthorized((await cookies()).get(studioCookieName())?.value); if (!authorized) return <StudioClient mode="login" />; const images = process.env.BLOB_READ_WRITE_TOKEN ? (await list({ prefix: 'portfolio/' })).blobs : []; return <StudioClient mode="manage" images={images.map(({ url, pathname }) => ({ url, pathname }))} remove={remove} />; }
