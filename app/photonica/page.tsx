@@ -6,6 +6,7 @@ const release = 'https://github.com/cxaiiii/photonica/releases/latest';
 const directDownload = 'https://github.com/cxaiiii/photonica/releases/download/v0.2.4/Photonica-v0.2.4-win64.zip';
 const validation = 'https://github.com/cxaiiii/photonica/blob/main/docs/validation/README.md';
 const source = 'https://github.com/cxaiiii/photonica';
+const docs = '/photonica/docs';
 
 export const metadata: Metadata = {
   title: 'Photonica — a spectral optics bench',
@@ -18,7 +19,7 @@ export default function Photonica() {
   return <main className="p-page">
     <nav className="p-nav">
       <Link className="wordmark" href="/"><i />CHAI.TXT</Link>
-      <div><Link href="/">Portfolio</Link><a href={validation} target="_blank">Validation ↗</a><a className="pill photon" href={release} target="_blank">Download Photonica ↗</a></div>
+      <div><Link href="/">Portfolio</Link><Link href={docs}>Docs</Link><a href={validation} target="_blank">Validation ↗</a><a className="pill photon" href={release} target="_blank">Download Photonica ↗</a></div>
     </nav>
 
     <section className="p-hero">
@@ -67,8 +68,8 @@ export default function Photonica() {
 
     <section className="p-caveat">
       <p className="kicker">The honest bit</p>
-      <h2>It needs an RTX-class GPU, and it isn&apos;t Zemax.</h2>
-      <p>Photonica ray traces on the GPU in real time, so it needs DirectX Raytracing 1.1 hardware — most laptops without a dedicated GPU can&apos;t run it yet. And it&apos;s built for building intuition and checking real designs quickly, not for replacing a $20,000/year lens-design suite on a production tolerance stack.</p>
+      <h2>The only thing we won&apos;t fake is your GPU.</h2>
+      <p>Photonica ray traces every photon in real time, so it needs a DirectX Raytracing 1.1 GPU — RTX-class NVIDIA, AMD RX 6000-series or newer, or Intel Arc. Most laptops without a dedicated GPU can&apos;t run it yet, and we&apos;d rather say that plainly than ship something that fakes the light to get around it. Everything else here — the physics, the tolerancing, where this is going — we&apos;re building for real, not for a demo.</p>
     </section>
 
     <section className="p-get">
@@ -76,10 +77,10 @@ export default function Photonica() {
       <h2>Choose your path.</h2>
       <div>
         <a className="button photon-btn" href={directDownload}>Windows · 1.4 MB ↓</a>
-        <a className="button p-get-alt" href={validation} target="_blank">Validation report ↗</a>
-        <a className="text-link" href={source} target="_blank">View on GitHub ↗</a>
+        <a className="button p-get-alt" href={docs}>Read the docs ↗</a>
+        <a className="text-link" href={validation} target="_blank">Validation report ↗</a>
+        <a className="text-link" href={source} target="_blank">GitHub ↗</a>
       </div>
-      <p className="download-note p-get-note">Source is not published; the build and the validation data are.</p>
     </section>
 
     <footer className="p-footer">
