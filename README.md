@@ -5,6 +5,8 @@
 - `/` — Chaitanya Saxena portfolio
 - `/vasudha` — standalone product landing page
 - `/studio` — password-protected image library
+- `/photonica` — Photonica product page (optics simulator)
+- `/photonica/docs` — Photonica documentation
 
 ## Launch on Vercel
 

@@ -1,91 +1,218 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
+import ScrollReveal from '@/components/scroll-reveal';
+import PrismHero from '@/components/photonica/prism-hero';
+import SpectrumLab from '@/components/photonica/spectrum-lab';
 
-const release = 'https://github.com/cxaiiii/photonica/releases/latest';
-const directDownload = 'https://github.com/cxaiiii/photonica/releases/download/v0.2.4/Photonica-v0.2.4-win64.zip';
+const VERSION = 'v0.2.4';
+const download = `https://github.com/cxaiiii/photonica/releases/download/${VERSION}/Photonica-${VERSION}-win64.zip`;
 const validation = 'https://github.com/cxaiiii/photonica/blob/main/docs/validation/README.md';
-const source = 'https://github.com/cxaiiii/photonica';
-const docs = '/photonica/docs';
+const github = 'https://github.com/cxaiiii/photonica';
 
 export const metadata: Metadata = {
-  title: 'Photonica — a spectral optics bench',
-  description: 'Build a laser through glass onto a screen, measure it like an instrument, watch the light actually arrive. Ray traced on the GPU, checked against closed-form optics.',
+  title: { absolute: 'Photonica — a laboratory for light' },
   alternates: { canonical: '/photonica' },
-  openGraph: { title: 'Photonica — see where the light goes', description: 'A spectral optics bench, ray traced on the GPU. Real dispersion, real time of flight, checked against 33 closed-form results.' },
 };
 
 export default function Photonica() {
-  return <main className="p-page">
-    <nav className="p-nav">
-      <Link className="wordmark" href="/"><i />CHAI.TXT</Link>
-      <div><Link href="/">Portfolio</Link><Link href={docs}>Docs</Link><a href={validation} target="_blank">Validation ↗</a><a className="pill photon" href={release} target="_blank">Download Photonica ↗</a></div>
+  return <main>
+    <nav className="ph-nav">
+      <Link className="ph-brand" href="/photonica"><Image src="/images/photonica/logo.png" alt="" width={60} height={60} />Photonica</Link>
+      <div>
+        <a href="#science">Science</a>
+        <a href="#lab">The lab</a>
+        <Link className="keep" href="/photonica/docs">Docs</Link>
+        <a href={validation} target="_blank">Validation</a>
+        <a className="ph-btn" href={download}>Download</a>
+      </div>
     </nav>
 
-    <section className="p-hero">
-      <div>
-        <p className="kicker">Photonica / spectral optics bench</p>
-        <Image src="/images/photonica/logo.png" alt="Photonica mark" width={220} height={220} priority className="p-logo" />
-        <h1>See where<br />the <em>light</em> goes.</h1>
-        <p>Photonica is a native GPU optics bench. Build a laser, drop in real glass, aim it at a screen — every ray carries a wavelength, every measurement is a real number, and the light in flight is slow enough to watch arrive.</p>
-        <div className="p-actions">
-          <a className="button photon-btn" href={directDownload}>Download for Windows · 1.4 MB ↓</a>
-          <a className="text-link" href="#why">What makes it different ↓</a>
+    <header className="ph-hero">
+      <PrismHero />
+      <div className="ph-hero-inner">
+        <span className="ph-kicker">A laboratory for light</span>
+        <h1 className="ph-h1">Light, exactly<br />as it <em>behaves.</em></h1>
+        <p className="ph-lede">Photonica simulates light the way physics does. Every ray carries its own wavelength, every lens is real glass, every photon arrives exactly when it would. Build any optical experiment you can imagine, measure it like an instrument, design optics you could manufacture, and watch light itself cross the room.</p>
+        <div className="ph-cta">
+          <a className="ph-btn" href={download}>Download for Windows <small>{VERSION} · 1.4 MB</small></a>
+          <Link className="ph-btn ghost" href="/photonica/docs">Read the docs</Link>
         </div>
-        <p className="download-note">Windows 10/11 · an RTX-class GPU (DirectX Raytracing 1.1) · free.</p>
+        <span className="ph-req">Windows 10 / 11 · RTX-class GPU · free</span>
       </div>
-      <Image className="p-splash" src="/images/photonica/splash.jpg" alt="White light dispersed into a spectrum by a glass prism inside Photonica" width={1400} height={1120} priority />
-    </section>
-
-    <section className="p-proof" id="why">
-      <p className="kicker">Most optics toys draw pretty rainbows</p>
-      <h2>This one gets<br />checked <mark>against physics.</mark></h2>
-      <p className="copy">A glass in Photonica isn&apos;t a colour — it&apos;s Sellmeier dispersion data, the same curves a real optics catalogue ships. So we ran 33 textbook experiments through it: Snell&apos;s law, Fresnel reflectance, Brewster&apos;s angle, the lensmaker equation, achromatic doublets, diffraction gratings, telescope magnification — each compared to its closed-form answer, not eyeballed.</p>
-      <div className="p-flow">
-        <b>33<span>closed-form checks run</span></b>
-        <b>33<span>passed, to sub-percent error</span></b>
-        <b>0<span>hidden or rounded away</span></b>
-        <b>2<span>bugs found — both in our own test, not the app</span></b>
+      <span className="ph-live"><i />Live · SF11 prism · real Sellmeier dispersion</span>
+      <div className="ph-stats ph-glass">
+        <div><b>33 / 33</b><span>checks against closed-form physics</span></div>
+        <div><b>17</b><span>experiments, ready to open</span></div>
+        <div><b>Real time</b><span>ray traced on your GPU</span></div>
+        <div><b>MCP</b><span>an AI can run the lab</span></div>
       </div>
-      <a className="text-link p-flow-link" href={validation} target="_blank">Read the full validation report ↗</a>
+    </header>
+
+    <section className="ph-sec">
+      <ScrollReveal className="ph-head">
+        <span className="ph-kicker">Who it&apos;s for</span>
+        <h2 className="ph-h2" data-ab>One lab. <em>Every</em> kind of curious.</h2>
+      </ScrollReveal>
+      <ScrollReveal className="ph-aud">
+        <article className="ph-glass">
+          <span className="glyph"><Spark c="#3dffa8" /></span>
+          <span className="tag">For students</span>
+          <h3>The textbook, running.</h3>
+          <p>Snell&apos;s law, lenses, total internal reflection, polarisation, diffraction. Change one number and the physics answers back with a measurement — the same numbers your exam expects, now something you can hold.</p>
+          <Link className="ph-link" href="/photonica/docs/light-and-colour">Start with light &amp; colour →</Link>
+        </article>
+        <article className="ph-glass">
+          <span className="glyph"><Spark c="#ffe14d" /></span>
+          <span className="tag">For the curious</span>
+          <h3>Rainbows, diamonds, and light slowed two billion times.</h3>
+          <p>Why a diamond throws fire, how one raindrop makes a rainbow, what a pulse of light looks like halfway across a table. Open a demo, drag a prism, and see it happen.</p>
+          <Link className="ph-link" href="/photonica/docs/first-experiment">Your first experiment →</Link>
+        </article>
+        <article className="ph-glass">
+          <span className="glyph"><Spark c="#7cc4ff" /></span>
+          <span className="tag">For engineers</span>
+          <h3>Design it. Tolerance it. Build it.</h3>
+          <p>Real glass catalogues, thin-film coatings, a damped least-squares optimiser, Monte-Carlo tolerancing with yield, Zemax import, and every measurement exported as raw JSON.</p>
+          <Link className="ph-link" href="/photonica/docs/lens-design">Lens design →</Link>
+        </article>
+      </ScrollReveal>
     </section>
 
-    <section className="p-screenshot">
-      <Image src="/images/photonica/light-in-flight.jpg" alt="Photonica's light-in-flight mode, showing a pulse of light mid-flight with a slow-down-factor overlay" width={720} height={1280} />
-      <div>
-        <p className="kicker">Light doesn&apos;t arrive instantly</p>
-        <h2>Watch it<br />get there.</h2>
-        <p>Every ray carries a real arrival time. Slow the pulse down two billion times and you can watch it cross a prism, refract, and land on a screen — with the screen staying dark until the light has actually reached it, not before.</p>
-        <a className="text-link" href={release} target="_blank">See it on a real bench ↗</a>
+    <div className="ph-rule" />
+
+    <section className="ph-sec" id="science">
+      <div className="ph-split">
+        <ScrollReveal className="ph-head" >
+          <span className="ph-kicker">Try it right here</span>
+          <h2 className="ph-h2" data-ab>Why white light <em>splits.</em></h2>
+          <p className="ph-p">Glass slows light down — but not every colour by the same amount. Violet crawls, red slips through, and so each colour leaves a prism at its own angle. That one fact is behind every rainbow, the fire in a diamond, and the coloured fringes on a cheap lens.</p>
+          <p className="ph-p">The slider runs the same dispersion formula Photonica uses for every ray: the Sellmeier equation, with the manufacturer&apos;s coefficients for two real glasses.</p>
+          <p className="ph-note-line">n²(λ) = 1 + Σ Bᵢλ² / (λ² − Cᵢ)</p>
+        </ScrollReveal>
+        <ScrollReveal><SpectrumLab /></ScrollReveal>
       </div>
     </section>
 
-    <section className="p-features">
-      <article><b>01</b><h3>Rays, waves, polarisation</h3><p>Dispersion, Fresnel reflection, interference, and full Stokes-vector polarisation — not a simplified subset of one.</p></article>
-      <article><b>02</b><h3>Design, not just draw</h3><p>A damped least-squares optimiser and Monte-Carlo tolerancing turn a rough lens sketch into a buildable design.</p></article>
-      <article><b>03</b><h3>An assistant can run it</h3><p>An MCP interface lets an AI build a bench, take a measurement, and check its own result — the same interface the validation suite used.</p></article>
+    <div id="lab" />
+    <Feature
+      kicker="Rays & real glass"
+      title={<>Every ray is a <em>real</em> wavelength.</>}
+      body="Nothing in Photonica is painted on. White light is dozens of wavelengths travelling together, glasses bend each one by their measured dispersion, and every surface splits the power between reflection and transmission the way Fresnel's equations say it must."
+      points={['Manufacturer Sellmeier and Schott data; load any Zemax AGF catalogue', 'Fresnel reflection, total internal reflection, thermal dn/dT', 'Anti-reflection, mirror and dichroic thin-film coatings', 'Lenses, aspheres, prisms, gems, water, mirrors, splitters, gratings', 'Every reflection branch followed — including the ghosts']}
+      img="/images/photonica/dsotm.jpg" alt="White light entering a glass prism and leaving as a spectrum, in Photonica"
+      float={{ at: 'br', b: '24 λ', s: 'wavelengths in one white beam' }} />
+    <Feature flip tall
+      kicker="Time of flight"
+      title={<>Light has a speed. <em>Watch</em> it.</>}
+      body="Every photon carries a real arrival time, slowed by exactly the right amount in every piece of glass it crosses. Slow the clock down two billion times and a pulse of light walks across your bench — and the screens stay dark until it has genuinely arrived."
+      points={['Group-delay timing on every path, femtosecond resolution', 'Light-in-flight playback with a Blender-style loop range', 'Screens that show only light that has already arrived', 'A planet-scale calculator: fibre, satellites, the Moon, Mars, Voyager']}
+      img="/images/photonica/light-in-flight.jpg" alt="A light pulse caught mid-flight in Photonica, with the slow-down factor overlaid"
+      float={{ at: 'tl', b: '2.1 billion×', s: 'slower than light' }} />
+    <Feature
+      kicker="Waves & polarisation"
+      title={<>Not just rays. <em>Waves.</em></>}
+      body="When the geometry runs out, the wave takes over. Photonica sums Huygens wavelets for slits and apertures, sends light through diffraction gratings order by order, and carries a full polarisation state — so a quarter-wave plate really does make circular light."
+      points={['Double slits and pinholes as Huygens–Fresnel sums', 'Diffraction gratings with per-order efficiency', 'Jones-vector polarisation and a live Stokes readout', 'Point spread function, Strehl ratio and MTF']}
+      img="/images/photonica/double-slit.jpg" alt="Young's double-slit interference fringes on a screen in Photonica"
+      float={{ at: 'br', b: 'λL / d', s: 'fringe spacing, measured' }} />
+    <Feature flip
+      kicker="Lens design"
+      title={<>From sketch to <em>something you could build.</em></>}
+      body="Describe what a lens should do — a focal length, a spot size, zero colour error — and the optimiser bends the surfaces until it does. Then tolerancing asks the hard question: when real glass is ground slightly wrong, how many of the lenses you make will still work?"
+      points={['Damped least-squares optimiser: curvatures, thicknesses, spacings, conics, tilts', 'Operands for spot size, focal length, collimation, chromatic focus', 'Monte-Carlo tolerancing with a refocus compensator and yield', 'Collision checks: unbuildable designs count as failures', 'Import Zemax .zmx lens prescriptions']}
+      img="/images/photonica/design.jpg" alt="Photonica's optimiser and tolerancing panel designing an achromatic doublet"
+      float={{ at: 'tl', b: '1320×', s: 'merit improvement, 7 iterations' }} />
+    <Feature
+      kicker="Photoreal & video"
+      title={<>Cinematic, <em>when you want it.</em></>}
+      body="Press P and the same scene becomes a spectral path-traced photograph: caustics pooling behind glass, beams glowing through haze, bloom around the brightest light. Then set camera keys on a timeline and render it — reel, square, widescreen or 4K."
+      points={['Spectral path tracer with caustics, haze, bloom and depth of field', 'Camera timeline with eased keyframes and orbits', 'Reel 9:16, square, 4:5, 16:9, 21:9 and 4K formats', 'Burned-in time-of-flight stats and a watermark, if you want them']}
+      img="/images/photonica/render.jpg" alt="Photonica's render timeline preparing a video of light in flight"
+      float={{ at: 'br', b: '4K', s: 'straight to mp4' }} />
+
+    <section className="ph-feat flip" id="mcp">
+      <ScrollReveal className="ph-feat-text">
+        <span className="ph-kicker">AI in the lab</span>
+        <h2 className="ph-h2" data-ab>Your assistant can <em>run the bench.</em></h2>
+        <p className="ph-p">Photonica speaks MCP, the open protocol AI assistants use to work with tools. Ask Claude to build a telescope, measure its magnification and check it against theory — it places the lenses, reads the numbers, and verifies its own work on your screen. That&apos;s exactly how Photonica&apos;s own validation suite was run.</p>
+        <ul className="ph-list">
+          <li>28 tools: build, measure, trace a ray, optimise, tolerance, screenshot, render</li>
+          <li>Reads polarisation state, arrival times and detector power directly</li>
+          <li>Local only: a private pipe on your machine, switchable off in one click</li>
+        </ul>
+        <Link className="ph-link" href="/photonica/docs/mcp" style={{ justifySelf: 'start' }}>MCP reference →</Link>
+      </ScrollReveal>
+      <ScrollReveal>
+        <div className="ph-term ph-glass" data-parallax="0.06">
+          <header><i /><i /><i /></header>
+          <pre><span className="c"># connect Claude Code to Photonica</span>{'\n'}<span className="k">claude mcp add</span> photonica -- <span className="s">&quot;…\photonica-mcp.exe&quot;</span>{'\n\n'}<span className="c"># then just ask, in plain words:</span>{'\n'}<span className="s">&quot;Build a Keplerian telescope with a 500 mm objective{'\n'} and a 50 mm eyepiece, find the spacing that{'\n'} collimates the output, and check the angular{'\n'} magnification against −f₁/f₂.&quot;</span></pre>
+        </div>
+      </ScrollReveal>
     </section>
 
-    <section className="p-caveat">
-      <p className="kicker">The honest bit</p>
-      <h2>The only thing we won&apos;t fake is your GPU.</h2>
-      <p>Photonica ray traces every photon in real time, so it needs a DirectX Raytracing 1.1 GPU — RTX-class NVIDIA, AMD RX 6000-series or newer, or Intel Arc. Most laptops without a dedicated GPU can&apos;t run it yet, and we&apos;d rather say that plainly than ship something that fakes the light to get around it. Everything else here — the physics, the tolerancing, where this is going — we&apos;re building for real, not for a demo.</p>
+    <section className="ph-sec">
+      <ScrollReveal className="ph-head">
+        <span className="ph-kicker">Checked, not claimed</span>
+        <h2 className="ph-h2" data-ab>We tested it against <em>the textbook.</em></h2>
+        <p className="ph-p">Thirty-three classic experiments — Snell, Fresnel, Brewster, the critical angle, the thick-lens equation, prism dispersion, achromats, Malus&apos;s law, wave plates, gratings, telescopes — each run through Photonica and compared to its closed-form answer. Every number and every method is published.</p>
+      </ScrollReveal>
+      <ScrollReveal className="ph-proof ph-glass">
+        <div><b>33/33</b><span>closed-form checks passed</span></div>
+        <div><b>0.02%</b><span>median relative error</span></div>
+        <div><b>5</b><span>fields: interfaces, lenses, dispersion, polarisation, waves</span></div>
+        <div><b>0</b><span>results hidden or rounded away</span></div>
+      </ScrollReveal>
+      <p style={{ marginTop: 26 }}><a className="ph-link" href={validation} target="_blank">Read the full validation report ↗</a></p>
     </section>
 
-    <section className="p-get">
-      <p className="kicker">Get Photonica</p>
-      <h2>Choose your path.</h2>
-      <div>
-        <a className="button photon-btn" href={directDownload}>Windows · 1.4 MB ↓</a>
-        <a className="button p-get-alt" href={docs}>Read the docs ↗</a>
-        <a className="text-link" href={validation} target="_blank">Validation report ↗</a>
-        <a className="text-link" href={source} target="_blank">GitHub ↗</a>
+    <section className="ph-sec" style={{ paddingTop: 30 }}>
+      <ScrollReveal className="ph-honest ph-glass">
+        <span className="big">DXR</span>
+        <div>
+          <span className="ph-kicker">The honest bit</span>
+          <h2>The only thing we won&apos;t fake is your GPU.</h2>
+          <p className="ph-p" style={{ maxWidth: 680 }}>Photonica ray traces every photon in real time, so it needs a DirectX Raytracing 1.1 graphics card — NVIDIA RTX 20-series or newer, AMD RX 6000-series or newer, or Intel Arc. Most laptops without a dedicated GPU can&apos;t run it yet. We&apos;d rather tell you that plainly than ship something that fakes the light to get around it.</p>
+        </div>
+      </ScrollReveal>
+    </section>
+
+    <section className="ph-final">
+      <span className="ph-kicker">Photonica {VERSION}</span>
+      <h2 className="ph-h2" data-ab>Step into <em>the lab.</em></h2>
+      <p className="ph-lede" style={{ textAlign: 'center' }}>Unzip, run, open a demo. Seventeen experiments are waiting, and the docs will take you from your first beam to your first lens design.</p>
+      <div className="ph-cta">
+        <a className="ph-btn" href={download}>Download for Windows <small>1.4 MB</small></a>
+        <Link className="ph-btn ghost" href="/photonica/docs">Documentation</Link>
+        <a className="ph-btn ghost" href={github} target="_blank">GitHub</a>
       </div>
     </section>
 
-    <footer className="p-footer">
-      <Image src="/images/photonica/design.jpg" alt="Photonica's lens optimiser and tolerancing panel" width={1600} height={800} />
-      <div><p>Built independently by Chaitanya Saxena.</p><a className="button photon-btn" href={directDownload}>Download Photonica ↓</a></div>
+    <footer className="ph-foot">
+      <span>Photonica is built independently by Chaitanya Saxena.</span>
+      <div><Link href="/">chaii.wtf</Link><Link href="/photonica/docs">Docs</Link><a href={validation} target="_blank">Validation</a><a href={github} target="_blank">GitHub</a></div>
     </footer>
   </main>;
+}
+
+function Spark({ c }: { c: string }) {
+  return <svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.5 11.8 8.2 18.5 10 11.8 11.8 10 18.5 8.2 11.8 1.5 10 8.2 8.2Z" fill={c} style={{ filter: `drop-shadow(0 0 6px ${c})` }} /></svg>;
+}
+
+function Feature({ kicker, title, body, points, img, alt, float, flip, tall }: {
+  kicker: string; title: React.ReactNode; body: string; points: string[]; img: string; alt: string;
+  float: { at: 'tl' | 'br'; b: string; s: string }; flip?: boolean; tall?: boolean;
+}) {
+  return <section className={`ph-feat${flip ? ' flip' : ''}`}>
+    <ScrollReveal className="ph-feat-text">
+      <span className="ph-kicker">{kicker}</span>
+      <h2 className="ph-h2" data-ab>{title}</h2>
+      <p className="ph-p">{body}</p>
+      <ul className="ph-list">{points.map((p) => <li key={p}>{p}</li>)}</ul>
+    </ScrollReveal>
+    <div className={`ph-media${tall ? ' tall' : ''}`}>
+      <div className="main ph-glass" data-parallax="0.05"><Image src={img} alt={alt} width={1600} height={tall ? 2840 : 880} sizes="(max-width: 960px) 100vw, 640px" /></div>
+      <div className={`float ${float.at} ph-glass`} data-parallax="0.1"><b>{float.b}</b><span>{float.s}</span></div>
+    </div>
+  </section>;
 }
