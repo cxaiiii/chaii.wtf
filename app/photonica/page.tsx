@@ -2,7 +2,9 @@ import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 import ScrollReveal from '@/components/scroll-reveal';
+import PhNav from '@/components/photonica/nav';
 import PrismHero from '@/components/photonica/prism-hero';
+import Clip from '@/components/photonica/clip';
 import SpectrumLab from '@/components/photonica/spectrum-lab';
 
 const VERSION = 'v0.2.4';
@@ -17,16 +19,7 @@ export const metadata: Metadata = {
 
 export default function Photonica() {
   return <main>
-    <nav className="ph-nav">
-      <Link className="ph-brand" href="/photonica"><Image src="/images/photonica/logo.png" alt="" width={60} height={60} />Photonica</Link>
-      <div>
-        <a href="#science">Science</a>
-        <a href="#lab">The lab</a>
-        <Link className="keep" href="/photonica/docs">Docs</Link>
-        <a href={validation} target="_blank">Validation</a>
-        <a className="ph-btn" href={download}>Download</a>
-      </div>
-    </nav>
+    <PhNav />
 
     <header className="ph-hero">
       <PrismHero />
@@ -102,13 +95,25 @@ export default function Photonica() {
       points={['Manufacturer Sellmeier and Schott data; load any Zemax AGF catalogue', 'Fresnel reflection, total internal reflection, thermal dn/dT', 'Anti-reflection, mirror and dichroic thin-film coatings', 'Lenses, aspheres, prisms, gems, water, mirrors, splitters, gratings', 'Every reflection branch followed — including the ghosts']}
       img="/images/photonica/dsotm.jpg" alt="White light entering a glass prism and leaving as a spectrum, in Photonica"
       float={{ at: 'br', b: '24 λ', s: 'wavelengths in one white beam' }} />
-    <Feature flip tall
-      kicker="Time of flight"
-      title={<>Light has a speed. <em>Watch</em> it.</>}
-      body="Every photon carries a real arrival time, slowed by exactly the right amount in every piece of glass it crosses. Slow the clock down two billion times and a pulse of light walks across your bench — and the screens stay dark until it has genuinely arrived."
-      points={['Group-delay timing on every path, femtosecond resolution', 'Light-in-flight playback with a Blender-style loop range', 'Screens that show only light that has already arrived', 'A planet-scale calculator: fibre, satellites, the Moon, Mars, Voyager']}
-      img="/images/photonica/light-in-flight.jpg" alt="A light pulse caught mid-flight in Photonica, with the slow-down factor overlaid"
-      float={{ at: 'tl', b: '2.1 billion×', s: 'slower than light' }} />
+    <section className="ph-feat flip">
+      <ScrollReveal className="ph-feat-text">
+        <span className="ph-kicker">Time of flight</span>
+        <h2 className="ph-h2" data-ab>Light has a speed. <em>Watch</em> it.</h2>
+        <p className="ph-p">Every photon carries a real arrival time, slowed by exactly the right amount in every piece of glass it crosses. Slow the clock down billions of times and a pulse of light walks across your bench — and the screens stay dark until it has genuinely arrived.</p>
+        <ul className="ph-list">
+          <li>Group-delay timing on every path, femtosecond resolution</li>
+          <li>Light-in-flight playback with a Blender-style loop range</li>
+          <li>Screens that show only light that has already arrived</li>
+          <li>A planet-scale calculator: fibre, satellites, the Moon, Mars, Voyager</li>
+        </ul>
+      </ScrollReveal>
+      <div className="ph-media">
+        <div className="main ph-glass" data-parallax="0.05">
+          <Clip src="/images/photonica/light-in-flight.mp4" poster="/images/photonica/light-in-flight-poster.jpg" alt="A pulse of light crossing a diamond, rendered by Photonica with the slow-down factor burned in" />
+        </div>
+        <div className="float tl ph-glass" data-parallax="0.1"><b>4.8 billion×</b><span>slower than light</span></div>
+      </div>
+    </section>
     <Feature
       kicker="Waves & polarisation"
       title={<>Not just rays. <em>Waves.</em></>}
