@@ -11,7 +11,9 @@ export default function Clip({ src, poster, alt }: { src: string; poster: string
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) { v.pause(); return; }
     const io = new IntersectionObserver(([e]) => { if (e.isIntersecting) v.play().catch(() => {}); else v.pause(); }, { threshold: 0.2 });
     io.observe(v);
-    return () => io.disconnect();
+    const vis = () => { if (document.visibilityState === 'visible' && v.getBoundingClientRect().top < innerHeight) v.play().catch(() => {}); };
+    document.addEventListener('visibilitychange', vis);
+    return () => { io.disconnect(); document.removeEventListener('visibilitychange', vis); };
   }, []);
   return <video ref={ref} className="ph-clip" src={src} poster={poster} aria-label={alt} muted loop playsInline preload="metadata" />;
 }

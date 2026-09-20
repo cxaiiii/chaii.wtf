@@ -5,6 +5,7 @@ import ScrollReveal from '@/components/scroll-reveal';
 import PhNav from '@/components/photonica/nav';
 import PrismHero from '@/components/photonica/prism-hero';
 import Clip from '@/components/photonica/clip';
+import Compare from '@/components/photonica/compare';
 import SpectrumLab from '@/components/photonica/spectrum-lab';
 
 const VERSION = 'v0.2.4';
@@ -128,13 +129,24 @@ export default function Photonica() {
       points={['Damped least-squares optimiser: curvatures, thicknesses, spacings, conics, tilts', 'Operands for spot size, focal length, collimation, chromatic focus', 'Monte-Carlo tolerancing with a refocus compensator and yield', 'Collision checks: unbuildable designs count as failures', 'Import Zemax .zmx lens prescriptions']}
       img="/images/photonica/design.jpg" alt="Photonica's optimiser and tolerancing panel designing an achromatic doublet"
       float={{ at: 'tl', b: '1320×', s: 'merit improvement, 7 iterations' }} />
-    <Feature
-      kicker="Photoreal & video"
-      title={<>Cinematic, <em>when you want it.</em></>}
-      body="Press P and the same scene becomes a spectral path-traced photograph: caustics pooling behind glass, beams glowing through haze, bloom around the brightest light. Then set camera keys on a timeline and render it — reel, square, widescreen or 4K."
-      points={['Spectral path tracer with caustics, haze, bloom and depth of field', 'Camera timeline with eased keyframes and orbits', 'Reel 9:16, square, 4:5, 16:9, 21:9 and 4K formats', 'Burned-in time-of-flight stats and a watermark, if you want them']}
-      img="/images/photonica/render.jpg" alt="Photonica's render timeline preparing a video of light in flight"
-      float={{ at: 'br', b: '4K', s: 'straight to mp4' }} />
+    <section className="ph-feat">
+      <ScrollReveal className="ph-feat-text">
+        <span className="ph-kicker">Photoreal &amp; video</span>
+        <h2 className="ph-h2" data-ab>One key turns it <em>cinematic.</em></h2>
+        <p className="ph-p">Press <b>P</b> and the same bench becomes a spectral path-traced photograph: caustics pooling inside the stone, beams glowing through haze, bloom around the brightest light. Same scene, same frame, same physics — drag the handle and watch the renderer change underneath it.</p>
+        <ul className="ph-list">
+          <li>Spectral path tracer with caustics, haze, bloom and depth of field</li>
+          <li>Camera timeline with eased keyframes and orbits</li>
+          <li>Reel 9:16, square, 4:5, 16:9, 21:9 and 4K formats</li>
+          <li>Burned-in time-of-flight stats and a watermark, if you want them</li>
+        </ul>
+      </ScrollReveal>
+      <ScrollReveal>
+        <Compare a="/images/photonica/light-in-flight-raw.mp4" b="/images/photonica/light-in-flight.mp4"
+          posterA="/images/photonica/light-in-flight-raw-poster.jpg" posterB="/images/photonica/light-in-flight-poster.jpg" labelA="Fast view" labelB="Photoreal" />
+        <p className="ph-cmp-hint">Both clips rendered by Photonica · drag to wipe</p>
+      </ScrollReveal>
+    </section>
 
     <section className="ph-feat flip" id="mcp">
       <ScrollReveal className="ph-feat-text">
