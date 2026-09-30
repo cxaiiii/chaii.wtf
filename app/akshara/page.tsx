@@ -3,7 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import ScrollReveal from '@/components/scroll-reveal';
 import { KineticPhone, StyleTile } from '@/components/akshara/kinetic';
-import { ISSUES, MAC, RELEASE, WIN } from '@/lib/akshara/site';
+import { APP, ISSUES, MAC, RELEASE, WIN } from '@/lib/akshara/site';
 
 export const metadata: Metadata = {
   title: { absolute: 'Akshara — captions that make people stop scrolling' },
@@ -28,7 +28,7 @@ export default function Akshara() {
         <a href="#styles">Styles</a>
         <a href="#languages">Languages</a>
         <Link href="/">chaii.wtf</Link>
-        <a className="ak-btn sm" href="#download">Get it free</a>
+        <a className="ak-btn sm" href={APP}>Try it free</a>
       </div>
     </nav>
 
@@ -38,10 +38,10 @@ export default function Akshara() {
         <h1 className="ak-h1">Captions that make people <em>stop scrolling.</em></h1>
         <p className="ak-lede">Drop in your video and watch every word you say come alive — popping, bouncing and glowing in perfect time with your voice. The look top creators pay editors for, done in minutes. In your language.</p>
         <div className="ak-cta">
-          <a className="ak-btn" href={WIN}>Download for Windows <small>Free during alpha</small></a>
-          <a className="ak-btn ghost" href={MAC}>Download for Mac <small>Free during alpha</small></a>
+          <a className="ak-btn" href={APP}>Try it free <small>Right in your browser</small></a>
+          <a className="ak-btn ghost" href="#download">Get the desktop app <small>Windows · Mac</small></a>
         </div>
-        <span className="ak-req">No account. No subscription. No editing skills needed.</span>
+        <span className="ak-req">No account. No download. No editing skills needed.</span>
       </div>
       <KineticPhone />
     </header>
@@ -79,6 +79,31 @@ export default function Akshara() {
       </ScrollReveal>
     </section>
 
+    <section className="ak-sec">
+      <ScrollReveal className="ak-head">
+        <span className="ak-kicker">New · Dubbing</span>
+        <h2 className="ak-h2">Your video, <em>in Hindi.</em> Or Tamil. Or Bengali.</h2>
+        <p className="ak-p">One click and your video speaks another language — a natural voice reads your words, timed to your video, with fresh captions to match. Reach a whole new audience without recording a single line again.</p>
+      </ScrollReveal>
+      <ScrollReveal className="ak-scripts ak-dub">
+        {[['Hindi', 'हिन्दी', 'deva'], ['Tamil', 'தமிழ்', 'taml'], ['Bengali', 'বাংলা', 'beng'], ['Telugu', 'తెలుగు', ''], ['Marathi', 'मराठी', 'deva'], ['Gujarati', 'ગુજરાતી', ''], ['Kannada', 'ಕನ್ನಡ', ''], ['Malayalam', 'മലയാളം', '']].map(([name, word, font]) => <div key={name} className={`ak-script ${font}`}><b>{word}</b><span>{name}</span></div>)}
+      </ScrollReveal>
+      <p className="ak-fine">11 languages, a choice of voices, and your first 10 minutes are free.</p>
+    </section>
+
+    <section className="ak-sec ak-behind">
+      <ScrollReveal className="ak-head">
+        <span className="ak-kicker">New · Sound design</span>
+        <h2 className="ak-h2">Sound that <em>hits.</em></h2>
+        <p className="ak-p">Whooshes as each line flies in, pops on the words that matter, a hit when your title lands — placed for you, in time with every word and every beat. Pick Clean, Punchy or Hype.</p>
+      </ScrollReveal>
+      <ScrollReveal className="ak-grid3 ak-sfx">
+        <article><span className="ak-step">~</span><h3>Clean</h3><p>Soft, subtle, professional.</p></article>
+        <article><span className="ak-step">!</span><h3>Punchy</h3><p>The classic creator edit.</p></article>
+        <article><span className="ak-step">⚡</span><h3>Hype</h3><p>Everything, on the beat.</p></article>
+      </ScrollReveal>
+    </section>
+
     <section className="ak-sec" id="languages">
       <ScrollReveal className="ak-head">
         <span className="ak-kicker">99 languages</span>
@@ -102,7 +127,9 @@ export default function Akshara() {
       <ScrollReveal className="ak-head">
         <span className="ak-kicker">Free early access</span>
         <h2 className="ak-h2">Be one of the <em>first.</em></h2>
-        <p className="ak-p">Akshara is in early access and free while it is. Try it on your next video, and tell us what would make it perfect.</p>
+        <p className="ak-p">Akshara is in early access and free while it is. Open it in your browser and try it on your next video — nothing to install.</p>
+        <div className="ak-cta"><a className="ak-btn" href={APP}>Open Akshara <small>Works best in Chrome or Edge</small></a></div>
+        <p className="ak-p" style={{ marginTop: 28 }}>For long videos and working offline, get the desktop app:</p>
       </ScrollReveal>
       <ScrollReveal className="ak-dl">
         <article>

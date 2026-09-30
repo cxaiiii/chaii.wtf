@@ -1,3 +1,4 @@
+export const APP = 'https://akshara.chaii.wtf';
 export const VERSION = '0.1.0-alpha.1';
 const base = `https://github.com/cxaiiii/akshara-releases/releases/download/v${VERSION}`;
 export const WIN = `${base}/Akshara-${VERSION}-win-x64-setup.exe`;
