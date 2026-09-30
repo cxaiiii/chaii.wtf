@@ -3,10 +3,10 @@ import Image from 'next/image';
 import Link from 'next/link';
 import ScrollReveal from '@/components/scroll-reveal';
 import { KineticPhone, StyleTile } from '@/components/akshara/kinetic';
-import { ISSUES, MAC, RELEASE, VERSION, WIN } from '@/lib/akshara/site';
+import { ISSUES, MAC, RELEASE, WIN } from '@/lib/akshara/site';
 
 export const metadata: Metadata = {
-  title: { absolute: 'Akshara — kinetic captions for every script' },
+  title: { absolute: 'Akshara — captions that make people stop scrolling' },
   alternates: { canonical: '/akshara' },
 };
 
@@ -16,8 +16,8 @@ const STYLES: [string, string][] = [
 ];
 
 const SCRIPTS: [string, string, string][] = [
-  ['हिन्दी', 'Devanagari', 'deva'], ['বাংলা', 'Bengali', 'beng'], ['தமிழ்', 'Tamil', 'taml'], ['العربية', 'Arabic', 'arab'],
-  ['日本語', 'Japanese', ''], ['한국어', 'Korean', ''], ['ไทย', 'Thai', ''], ['English', 'Latin', 'lat'],
+  ['हिन्दी', 'Hindi', 'deva'], ['বাংলা', 'Bengali', 'beng'], ['தமிழ்', 'Tamil', 'taml'], ['العربية', 'Arabic', 'arab'],
+  ['日本語', 'Japanese', ''], ['한국어', 'Korean', ''], ['ไทย', 'Thai', ''], ['English', 'English', 'lat'],
 ];
 
 export default function Akshara() {
@@ -26,31 +26,39 @@ export default function Akshara() {
       <Link className="ak-brand" href="/akshara"><Image src="/images/akshara/logo.png" alt="" width={34} height={34} />Akshara<span className="ak-alpha">ALPHA</span></Link>
       <div>
         <a href="#styles">Styles</a>
-        <a href="#scripts">Scripts</a>
+        <a href="#languages">Languages</a>
         <Link href="/">chaii.wtf</Link>
-        <a className="ak-btn sm" href="#download">Download</a>
+        <a className="ak-btn sm" href="#download">Get it free</a>
       </div>
     </nav>
 
     <header className="ak-hero">
       <div className="ak-hero-text">
-        <span className="ak-kicker">Kinetic captions · free alpha</span>
-        <h1 className="ak-h1">Every word<br />you say becomes <em>motion.</em></h1>
-        <p className="ak-lede">Drop in a video. Akshara transcribes it word by word — in Hindi, Tamil, Arabic, Japanese, Bengali, English and 90-odd more — and turns the words into captions that pop, bounce and glow. It runs on your own computer, on your GPU.</p>
+        <span className="ak-kicker">For creators who talk to camera</span>
+        <h1 className="ak-h1">Captions that make people <em>stop scrolling.</em></h1>
+        <p className="ak-lede">Drop in your video and watch every word you say come alive — popping, bouncing and glowing in perfect time with your voice. The look top creators pay editors for, done in minutes. In your language.</p>
         <div className="ak-cta">
-          <a className="ak-btn" href={WIN}>Download for Windows <small>190 MB</small></a>
-          <a className="ak-btn ghost" href={MAC}>Download for Mac <small>Apple Silicon · 173 MB</small></a>
+          <a className="ak-btn" href={WIN}>Download for Windows <small>Free during alpha</small></a>
+          <a className="ak-btn ghost" href={MAC}>Download for Mac <small>Free during alpha</small></a>
         </div>
-        <span className="ak-req">v{VERSION} · Windows 10/11 · macOS 12+ on M1 or newer · free</span>
+        <span className="ak-req">No account. No subscription. No editing skills needed.</span>
       </div>
       <KineticPhone />
     </header>
 
+    <section className="ak-sec ak-steps">
+      <ScrollReveal className="ak-grid3">
+        <article><span className="ak-step">1</span><h3>Drop in your video</h3><p>Reels, Shorts, podcasts, vlogs — anything with someone talking.</p></article>
+        <article><span className="ak-step">2</span><h3>Pick a style</h3><p>Every word is caught and timed for you. Tap a look and it&apos;s done.</p></article>
+        <article><span className="ak-step">3</span><h3>Post it</h3><p>Export a ready-to-upload video for Instagram, YouTube or TikTok.</p></article>
+      </ScrollReveal>
+    </section>
+
     <section className="ak-sec" id="styles">
       <ScrollReveal className="ak-head">
-        <span className="ak-kicker">18 caption styles</span>
-        <h2 className="ak-h2">Pick a look. <em>Every word</em> follows it.</h2>
-        <p className="ak-p">Each style animates word by word, timed to the speech. Beat Pulse and Voice Pulse go further and move with the music and the speaker&apos;s voice.</p>
+        <span className="ak-kicker">18 styles, one tap each</span>
+        <h2 className="ak-h2">The styles you see <em>everywhere.</em> Yours now.</h2>
+        <p className="ak-p">From bold Hormozi-style captions to glowing neon and beat-synced text that pulses with your music. Each word lands exactly when you say it.</p>
       </ScrollReveal>
       <ScrollReveal className="ak-tiles">
         {STYLES.map(([name, kind]) => <StyleTile key={kind} name={name} kind={kind} />)}
@@ -59,9 +67,9 @@ export default function Akshara() {
 
     <section className="ak-sec ak-behind">
       <ScrollReveal className="ak-head">
-        <span className="ak-kicker">Text behind the subject</span>
-        <h2 className="ak-h2">Put the title <em>behind</em> the person.</h2>
-        <p className="ak-p">One click separates whoever is on screen from the background, and any text layer can sit between them — the look that usually takes a rotoscope pass in After Effects.</p>
+        <span className="ak-kicker">The viral look</span>
+        <h2 className="ak-h2">Put your title <em>behind</em> you.</h2>
+        <p className="ak-p">That magazine-cover effect where the text sits behind the person? One click. No masking, no rotoscoping, no hours in After Effects.</p>
       </ScrollReveal>
       <ScrollReveal className="ak-behind-art">
         <div className="ak-behind-frame" aria-hidden="true">
@@ -71,11 +79,11 @@ export default function Akshara() {
       </ScrollReveal>
     </section>
 
-    <section className="ak-sec" id="scripts">
+    <section className="ak-sec" id="languages">
       <ScrollReveal className="ak-head">
-        <span className="ak-kicker">Every script</span>
-        <h2 className="ak-h2">Shaped properly. <em>Not boxes.</em></h2>
-        <p className="ak-p">Conjuncts, matras, ligatures and right-to-left text render the way they should, with fonts built for each script. Transcription understands 99 languages, and code-switched speech like Hinglish stays in one script.</p>
+        <span className="ak-kicker">99 languages</span>
+        <h2 className="ak-h2">Speak <em>your</em> language. Look beautiful in it.</h2>
+        <p className="ak-p">Most caption apps mangle Hindi, Tamil or Arabic. Akshara writes every language the way it&apos;s meant to be written — and even keeps Hinglish in one script.</p>
       </ScrollReveal>
       <ScrollReveal className="ak-scripts">
         {SCRIPTS.map(([word, name, font]) => <div key={name} className={`ak-script ${font}`}><b>{word}</b><span>{name}</span></div>)}
@@ -84,30 +92,31 @@ export default function Akshara() {
 
     <section className="ak-sec">
       <ScrollReveal className="ak-grid3">
-        <article><span className="ak-kicker">On your machine</span><h3>Your GPU does the work.</h3><p>Transcription runs on NVIDIA, AMD, Intel or Apple Silicon graphics, with a CPU fallback. Nothing is uploaded unless you choose the optional cloud extras.</p></article>
-        <article><span className="ak-kicker">Export</span><h3>Burned in, or as an overlay.</h3><p>MP4 with hardware encoding, or a transparent ProRes 4444 / VP9 overlay for Premiere Pro, After Effects and DaVinci Resolve. Subtitles export to SRT, VTT and ASS.</p></article>
-        <article><span className="ak-kicker">Offline</span><h3>No account. No upload.</h3><p>After the models download once, transcribing, styling and exporting all work without an internet connection.</p></article>
+        <article><span className="ak-kicker">Fast</span><h3>Minutes, not hours.</h3><p>What used to take an afternoon of typing and timing is ready before your coffee cools.</p></article>
+        <article><span className="ak-kicker">Private</span><h3>Your videos stay yours.</h3><p>Akshara works on your own computer. Your videos never get uploaded anywhere.</p></article>
+        <article><span className="ak-kicker">Yours to keep</span><h3>No subscription.</h3><p>No monthly fee, no account, no credits running out halfway through a project.</p></article>
       </ScrollReveal>
     </section>
 
     <section className="ak-sec ak-download" id="download">
       <ScrollReveal className="ak-head">
-        <span className="ak-kicker">Free alpha · v{VERSION}</span>
-        <h2 className="ak-h2">Try it. <em>Break it.</em> Tell me.</h2>
+        <span className="ak-kicker">Free early access</span>
+        <h2 className="ak-h2">Be one of the <em>first.</em></h2>
+        <p className="ak-p">Akshara is in early access and free while it is. Try it on your next video, and tell us what would make it perfect.</p>
       </ScrollReveal>
       <ScrollReveal className="ak-dl">
         <article>
           <h3>Windows</h3>
-          <p>Windows 10 or 11, 64-bit. If SmartScreen says “Windows protected your PC”, click <b>More info → Run anyway</b> — alpha builds aren&apos;t signed with a trusted certificate yet.</p>
-          <a className="ak-btn" href={WIN}>Download .exe <small>190 MB</small></a>
+          <p>Windows 10 or 11. If Windows shows a blue “protected your PC” screen, click <b>More info</b>, then <b>Run anyway</b> — that&apos;s normal for early-access apps.</p>
+          <a className="ak-btn" href={WIN}>Download for Windows</a>
         </article>
         <article>
-          <h3>macOS</h3>
-          <p>macOS 12+ on Apple Silicon (M1 or newer). Drag to Applications and open once; on macOS 15, then click <b>Open Anyway</b> in System Settings → Privacy &amp; Security.</p>
-          <a className="ak-btn" href={MAC}>Download .dmg <small>173 MB</small></a>
+          <h3>Mac</h3>
+          <p>Macs from 2020 onwards (M1 or newer). Drag Akshara into Applications and open it. If your Mac asks, go to <b>System Settings → Privacy &amp; Security</b> and click <b>Open Anyway</b>.</p>
+          <a className="ak-btn" href={MAC}>Download for Mac</a>
         </article>
       </ScrollReveal>
-      <p className="ak-fine">The first run downloads the speech model (~550 MB). Free exports carry a small “Made with Akshara” mark. Found a bug? <a href={ISSUES}>Open an issue</a> with the log file. <a href={RELEASE}>Release notes</a>.</p>
+      <p className="ak-fine">Early-access videos include a small “Made with Akshara” mark. Something not right? <a href={ISSUES}>Tell us</a>. <a href={RELEASE}>What&apos;s new</a>.</p>
     </section>
 
     <footer className="ak-foot"><span>Akshara · made by Chaii</span><Link href="/">chaii.wtf ↗</Link></footer>

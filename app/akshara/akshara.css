@@ -65,3 +65,4 @@
 @media(max-width:600px){.ak-nav{padding:0 16px}.ak-nav>div>a:not(.ak-btn){display:none}.ak-hero,.ak-sec{padding-left:16px;padding-right:16px}.ak-hero{padding-top:50px}.ak-sec{padding-top:70px;padding-bottom:70px}.ak-foot{padding:24px 16px 40px}.ak-cta .ak-btn{width:100%}}
 @media(prefers-reduced-motion:reduce){.ak *{animation:none!important}}
 .ak .ak-foot{background:transparent;color:#77758a;max-width:1240px;margin:auto;padding:30px 32px 50px;display:flex;justify-content:space-between;border-top:1px solid var(--line)}
+.ak-steps{padding-top:0;border-top:0}.ak-step{display:inline-grid;place-items:center;width:34px;height:34px;border-radius:50%;background:var(--grad);font:700 15px var(--ak-sans);color:#fff}

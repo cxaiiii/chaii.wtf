@@ -10,9 +10,9 @@ const taml = Noto_Sans_Tamil({ subsets: ['tamil'], weight: ['700', '900'], varia
 const arab = Noto_Sans_Arabic({ subsets: ['arabic'], weight: ['700', '900'], variable: '--ak-arab', display: 'swap', preload: false });
 
 export const metadata: Metadata = {
-  title: { default: 'Akshara — kinetic captions for every script', template: '%s — Akshara' },
-  description: 'Word-accurate animated captions in 99 languages, text behind the subject, and GPU export — on your own computer. Free alpha for Windows and macOS.',
-  openGraph: { siteName: 'Akshara', title: 'Akshara — kinetic captions for every script', description: 'Every word you say becomes motion. In Hindi, Tamil, Arabic, Japanese, Bengali, English and 90+ more.' },
+  title: { default: 'Akshara — captions that make people stop scrolling', template: '%s — Akshara' },
+  description: 'Animated captions that pop, bounce and glow with every word you say — in 99 languages, in minutes. Free early access for Windows and Mac.',
+  openGraph: { siteName: 'Akshara', title: 'Akshara — captions that make people stop scrolling', description: 'The captions top creators pay editors for, done in minutes. In Hindi, Tamil, Arabic, English and 95 more.' },
 };
 
 export default function AksharaLayout({ children }: { children: React.ReactNode }) {
