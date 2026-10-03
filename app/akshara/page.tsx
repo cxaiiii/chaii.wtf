@@ -3,7 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import ScrollReveal from '@/components/scroll-reveal';
 import { KineticPhone, StyleTile } from '@/components/akshara/kinetic';
-import { ANDROID, APP, APPLY, ISSUES, MAC, RELEASE, WIN } from '@/lib/akshara/site';
+import { ANDROID, APP, APPLY, DESKTOP_HAS_3D, ISSUES, MAC, RELEASE, WIN } from '@/lib/akshara/site';
 
 export const metadata: Metadata = {
   title: { absolute: 'Akshara — captions that make people stop scrolling' },
@@ -109,7 +109,7 @@ export default function Akshara() {
 
     <section className="ak-sec ak-behind" id="3d">
       <ScrollReveal className="ak-head">
-        <span className="ak-kicker">New · 3D on Windows &amp; Mac</span>
+        <span className="ak-kicker">{DESKTOP_HAS_3D ? 'New · 3D on Windows & Mac' : 'Coming soon · 3D on Windows & Mac'}</span>
         <h2 className="ak-h2">Titles that live <em>in your scene.</em></h2>
         <p className="ak-p">Akshara follows how your camera moves, so a 3D title stays standing on the floor, stuck to the wall or sitting on the table as you walk past it. It picks up your video&apos;s light and colour, drops a real shadow, and finds the floors, walls and tables for you. Then have some fun: sparks that pour out of your words, a line that dissolves into dust, confetti that bounces off you.</p>
       </ScrollReveal>
@@ -182,12 +182,12 @@ export default function Akshara() {
         </article>
         <article>
           <h3>Windows</h3>
-          <p>Windows 10 or 11. If Windows shows a blue “protected your PC” screen, click <b>More info</b>, then <b>Run anyway</b> — that&apos;s normal for early-access apps. Includes the 3D tools.</p>
+          <p>Windows 10 or 11. If Windows shows a blue “protected your PC” screen, click <b>More info</b>, then <b>Run anyway</b> — that&apos;s normal for early-access apps.{DESKTOP_HAS_3D ? ' Includes the 3D tools.' : ''}</p>
           <a className="ak-btn" href={WIN}>Download for Windows</a>
         </article>
         <article>
           <h3>Mac</h3>
-          <p>Macs from 2020 onwards (M1 or newer). Drag Akshara into Applications and open it. If your Mac asks, go to <b>System Settings → Privacy &amp; Security</b> and click <b>Open Anyway</b>. Includes the 3D tools.</p>
+          <p>Macs from 2020 onwards (M1 or newer). Drag Akshara into Applications and open it. If your Mac asks, go to <b>System Settings → Privacy &amp; Security</b> and click <b>Open Anyway</b>.{DESKTOP_HAS_3D ? ' Includes the 3D tools.' : ''}</p>
           <a className="ak-btn" href={MAC}>Download for Mac</a>
         </article>
       </ScrollReveal>
