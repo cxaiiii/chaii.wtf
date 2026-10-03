@@ -66,3 +66,13 @@
 @media(prefers-reduced-motion:reduce){.ak *{animation:none!important}}
 .ak .ak-foot{background:transparent;color:#77758a;max-width:1240px;margin:auto;padding:30px 32px 50px;display:flex;justify-content:space-between;border-top:1px solid var(--line)}
 .ak-steps{padding-top:0;border-top:0}.ak-step{display:inline-grid;place-items:center;width:34px;height:34px;border-radius:50%;background:var(--grad);font:700 15px var(--ak-sans);color:#fff}
+/* 3D: a word standing on a floor, its shadow, sparks rising */
+.ak-req a{color:var(--txt);border-bottom:1px solid #555}
+.ak-3d-frame{position:relative;aspect-ratio:4/3.4;border-radius:22px;overflow:hidden;border:1px solid var(--line);background:linear-gradient(#1b1630 0%,#2b1d3d 46%,#120f1b 46.2%,#0d0b14 100%);perspective:520px}
+.ak-3d-floor{position:absolute;left:-40%;right:-40%;top:46%;height:110%;transform-origin:top;transform:rotateX(72deg);background-image:linear-gradient(#ff3d7740 1px,transparent 1px),linear-gradient(90deg,#ff3d7740 1px,transparent 1px);background-size:44px 44px;mask-image:linear-gradient(#000,transparent 85%)}
+.ak-3d-word{position:absolute;left:0;right:0;bottom:44%;text-align:center;font:400 clamp(34px,4.6vw,66px)/.9 var(--ak-display);color:#fff;background:linear-gradient(#fff 30%,#ffd2b0);-webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 2px 0 #ff8a2a) drop-shadow(0 4px 0 #ff3d77)}
+.ak-3d-shadow{position:absolute;left:0;right:0;top:56%;text-align:center;font:400 clamp(34px,4.6vw,66px)/.9 var(--ak-display);color:#000;opacity:.45;filter:blur(5px);transform:scaleY(-.55) skewX(-28deg);transform-origin:top}
+.ak-spark{position:absolute;left:calc(22% + var(--i)*3.2%);bottom:52%;width:6px;height:6px;border-radius:50%;background:var(--yellow);box-shadow:0 0 10px var(--orange);animation:akSpark 2.6s calc(var(--i)*-.17s) infinite ease-out}
+@keyframes akSpark{0%{transform:translate(0,0) scale(1);opacity:0}10%{opacity:1}100%{transform:translate(calc((var(--i) - 9)*6px),-150px) scale(.2);opacity:0}}
+.ak-dl{grid-template-columns:repeat(3,1fr)}
+@media(max-width:900px){.ak-dl{grid-template-columns:1fr}}

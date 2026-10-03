@@ -11,7 +11,7 @@ const arab = Noto_Sans_Arabic({ subsets: ['arabic'], weight: ['700', '900'], var
 
 export const metadata: Metadata = {
   title: { default: 'Akshara — captions that make people stop scrolling', template: '%s — Akshara' },
-  description: 'Animated captions that pop, bounce and glow with every word you say — in 99 languages, in minutes. Free early access for Windows and Mac.',
+  description: 'Animated captions that pop, bounce and glow with every word you say — in 99 languages, in minutes. Dubbing, text behind you and 3D titles. Free early access on Android, Windows, Mac and the web.',
   openGraph: { siteName: 'Akshara', title: 'Akshara — captions that make people stop scrolling', description: 'The captions top creators pay editors for, done in minutes. In Hindi, Tamil, Arabic, English and 95 more.' },
 };
 
