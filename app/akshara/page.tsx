@@ -68,6 +68,28 @@ export default function Akshara() {
       </ScrollReveal>
     </section>
 
+    <section className="ak-sec ak-behind" id="cards">
+      <ScrollReveal className="ak-head">
+        <span className="ak-kicker">New · Animation cards</span>
+        <h2 className="ak-h2">Design your own <em>animation.</em></h2>
+        <p className="ak-p">Build how a word moves the way motion designers do in After Effects: stack layers of text and shapes, keyframe anything, shape the motion on a curve, and let one layer show only through another. Save it as a card and every word you say plays it — a marker that sweeps under each word, letters that fill with colour as you speak them, a word revealed through a moving mask.</p>
+      </ScrollReveal>
+      <ScrollReveal className="ak-card-art">
+        <div className="ak-card-frame" aria-hidden="true">
+          <div className="ak-card-stage"><span className="ak-card-word"><i />SAY IT</span></div>
+          <div className="ak-card-tl">
+            <div className="ak-card-zones"><b>In</b><b>Hold</b><b>Out</b></div>
+            {[['Marker', [6, 30]], ['Text', [6, 18, 80]], ['Opacity', [74, 94]]].map(([name, keys]) => (
+              <div key={name as string} className="ak-card-row">
+                <span>{name as string}</span>
+                <div>{(keys as number[]).map((k) => <i key={k} style={{ left: `${k}%` }} />)}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </ScrollReveal>
+    </section>
+
     <section className="ak-sec ak-behind">
       <ScrollReveal className="ak-head">
         <span className="ak-kicker">The viral look</span>
